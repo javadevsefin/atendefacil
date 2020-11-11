@@ -1,0 +1,42 @@
+package br.gov.go.goiania.atendefacil.service;
+
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import br.gov.go.goiania.atendefacil.domain.Orgao;
+import br.gov.go.goiania.atendefacil.repository.OrgaoRepository;
+
+@Service
+public class OrgaoService {
+	
+	@Autowired
+	private OrgaoRepository or;
+	
+	public Iterable<Orgao> listarOrgao(){
+		return or.findAll();
+	}
+	
+	public Optional<Orgao> listOrgaoById(Long id) {
+		return or.findById(id);
+	}
+
+	public void gravar(Orgao orgao) {
+		or.save(orgao);
+	}
+
+	public void alterar(Orgao orgao) {
+		Optional<Orgao> o = or.findById(orgao.getId());
+		if(o.isPresent()) {
+			or.save(orgao);
+		}
+	}
+	public void delete(Long id) {
+		Optional<Orgao> o = this.listOrgaoById(id);
+		if(o.isPresent()) {
+			or.deleteById(id);
+		}
+	}
+}

@@ -1,0 +1,47 @@
+package br.gov.go.goiania.atendefacil.controller;
+
+import java.util.Optional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import br.gov.go.goiania.atendefacil.domain.Orgao;
+import br.gov.go.goiania.atendefacil.service.OrgaoService;
+
+
+@RestController
+@RequestMapping("/atendeFacil/api/orgao")
+public class OrgaoController {
+	
+	@Autowired
+	private OrgaoService os; 
+	
+	@GetMapping()
+	public ResponseEntity<Iterable<Orgao>> listarOrgao(){
+		return ResponseEntity.ok(os.listarOrgao());
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Orgao> listarOrgao(@PathVariable("id") Long id){
+		Optional<Orgao> orgao = os.listOrgaoById(id);
+		return orgao.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+	} 
+	
+	@PostMapping()
+	@ResponseStatus(HttpStatus.CREATED)
+	public void gravar(@RequestBody Orgao orgao) {
+		os.gravar(orgao);
+	}
+	
+	@PutMapping("/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void alterar(@RequestBody Orgao orgao) {
+		os.alterar(orgao);
+	}
+	
+	@DeleteMapping("/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void delete(@PathVariable("id") Long id) {
+		os.delete(id);
+	}
+}

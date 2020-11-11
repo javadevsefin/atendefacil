@@ -1,0 +1,48 @@
+package br.gov.go.goiania.atendefacil.controller;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import br.gov.go.goiania.atendefacil.domain.Guiche;
+import br.gov.go.goiania.atendefacil.service.GuicheService;
+
+@RestController
+@RequestMapping("/atendeFacil/api/guiche")
+public class GuicheController {
+	
+	@Autowired
+	private GuicheService gs;
+	
+	@GetMapping()
+	public ResponseEntity<Iterable<Guiche>> listarGuiche(){
+		return ResponseEntity.ok(gs.listarGuiche());
+	}
+	
+	@GetMapping("/{id}")
+	public ResponseEntity<Guiche> listarGuiche(@PathVariable("id") Long id) {
+		Optional<Guiche> guiche = gs.listGuicheById(id);
+		return guiche.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+	}
+	
+	@PostMapping()
+	@ResponseStatus(HttpStatus.CREATED)
+	public void gravar(@RequestBody Guiche guiche) {
+		gs.gravar(guiche);
+	}
+	
+	@PutMapping("/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void alterar(@RequestBody Guiche guiche) {
+		gs.alterar(guiche);
+	}
+	
+	@DeleteMapping("/{id}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void delete(@PathVariable("id") Long id) {	
+		gs.delete(id);
+	}
+}
