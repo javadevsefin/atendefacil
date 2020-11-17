@@ -21,6 +21,12 @@ public class ServidorService {
 	public List<Servidor> buscaAvancada(String matricula, String nome, String cpf){
 		return sr.findByMatriculaNomeCpf(matricula, nome, cpf);
 	}
+	
+	
+	public void gravar(Servidor servidor) {
+		sr.save(servidor);
+	}
+	
 }
 
 
