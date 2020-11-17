@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 
 @Entity
-@Table(name="detalhe_servico")
+@Table(name="detalhamento_servico")
 @SuppressWarnings("serial")
 public class DetalhamentoServico implements Serializable {
 	
@@ -21,7 +21,7 @@ public class DetalhamentoServico implements Serializable {
 	@Column(name="detalhamento", nullable = false, length = 100)
 	private String detalhamento;
 		
-	//Relacionamento feito manualmente
+	
 	@ManyToOne
 	@JoinColumn(name="servico_id", nullable = false)
 	private Servico servico = new Servico();
