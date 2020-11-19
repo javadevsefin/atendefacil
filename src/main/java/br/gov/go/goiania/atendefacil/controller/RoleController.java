@@ -1,6 +1,7 @@
 package br.gov.go.goiania.atendefacil.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,8 +17,8 @@ public class RoleController {
 	private RoleService rs;
 	
 	@GetMapping()
-	public Iterable<Role> listarRole(){
-		return rs.listarRole();
+	public ResponseEntity<Iterable<Role>> listarRole(){
+		return ResponseEntity.ok(rs.listarRole());
 	}
 
 }
