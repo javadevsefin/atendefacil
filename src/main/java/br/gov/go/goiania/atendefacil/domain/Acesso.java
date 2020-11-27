@@ -25,7 +25,7 @@ public class Acesso implements Serializable {
 	
 	@ManyToOne
 	@JoinColumn(name="servidor_id", nullable = false)
-	private Servidor colaborador = new Servidor();
+	private Servidor servidor = new Servidor();
 	
 	@ManyToOne
 	@JoinColumn(name="unidade_id", nullable = false)
@@ -55,12 +55,12 @@ public class Acesso implements Serializable {
 		this.senha = senha;
 	}
 
-	public Servidor getColaborador() {
-		return colaborador;
+	public Servidor getServidor() {
+		return servidor;
 	}
 
-	public void setColaborador(Servidor colaborador) {
-		this.colaborador = colaborador;
+	public void setServidor(Servidor servidor) {
+		this.servidor = servidor;
 	}
 
 	public Unidade getUnidade() {
@@ -81,7 +81,7 @@ public class Acesso implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Acesso [id=" + id + ", senha=" + senha + ", colaborador=" + colaborador + ", unidade=" + unidade
-				+ ", role=" + role + "]";
+		return "Acesso [id=" + id + ", senha=" + senha + ", servidor=" + servidor + ", unidade=" + unidade + ", role="
+				+ role + "]";
 	}
 }

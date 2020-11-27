@@ -62,4 +62,12 @@ public class DetalhamentoServico implements Serializable {
 		this.servico = servico;
 	}
 
+	@Override
+	public String toString() {
+		return "DetalhamentoServico [id=" + id + ", descricao=" + descricao + ", detalhamento=" + detalhamento
+				+ ", servico=" + servico + "]";
+	}
+	
+	
+
 }

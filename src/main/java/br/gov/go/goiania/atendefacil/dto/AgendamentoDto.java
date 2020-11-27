@@ -42,6 +42,4 @@ public class AgendamentoDto {
 	public void setPrioridade(String prioridade) {
 		this.prioridade = prioridade;
 	}
-	
-	
 }
