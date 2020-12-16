@@ -125,6 +125,15 @@ public class AgendamentoService {
 		
 		ar.save(agendamento);
 	}
+	
+	public void gerarFila(Long id) {
+		Agendamento agendamento = ar.findById(id).orElseThrow(()->
+		new ResponseStatusException(HttpStatus.BAD_REQUEST, "Agendamento não encontrado"));
+		
+		agendamento.setStatusAgendamento("Ativado");
+		
+		ar.save(agendamento);
+	}
 	 
 	public String ajustaHora(Integer horaM) {
 		

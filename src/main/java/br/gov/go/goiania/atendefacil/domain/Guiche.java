@@ -34,6 +34,11 @@ public class Guiche implements Serializable {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
+	@Override
+	public String toString() {
+		return "Guiche [id=" + id + ", descricao=" + descricao + "]";
+	}
 	
 }
 

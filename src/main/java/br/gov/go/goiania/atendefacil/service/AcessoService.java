@@ -40,6 +40,10 @@ public class AcessoService {
 		return ar.findById(id);
 	}
 	
+	public Optional<Acesso> logar(String matricula, String senha){
+		return ar.logar(matricula, senha);
+	}
+	
 	public void gravar(Acesso acesso) {
 		
 		Servidor servidor = sr.findByMatricula(acesso.getServidor().getMatricula()).orElseThrow(()->

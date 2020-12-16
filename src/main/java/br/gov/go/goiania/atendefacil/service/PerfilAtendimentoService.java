@@ -32,13 +32,14 @@ public class PerfilAtendimentoService {
 	@Autowired
 	private DetalhamentoServicoRepository dsr;
 	
+	
 	public Iterable<PerfilAtendimento> listarPerfilAtendimento(){
 		return par.findAll();
 	}
 	
 	public List<PerfilAtendimentoDto> listarPerfil(String matricula){
 		return par.listarPerfil(matricula).stream().map(PerfilAtendimentoDto:: new).collect(Collectors.toList());
-	}
+	}	
 	
 	public void gerarPerfil(String matricula, Long servico) {
 		

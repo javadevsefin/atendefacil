@@ -81,4 +81,9 @@ public class Unidade implements Serializable {
 		this.telefone = telefone;
 	}
 
+	@Override
+	public String toString() {
+		return "Unidade [id=" + id + ", sigla=" + sigla + ", descricao=" + descricao + ", endereco=" + endereco
+				+ ", codigo=" + codigo + ", telefone=" + telefone + "]";
+	}
 }

@@ -67,7 +67,4 @@ public class DetalhamentoServico implements Serializable {
 		return "DetalhamentoServico [id=" + id + ", descricao=" + descricao + ", detalhamento=" + detalhamento
 				+ ", servico=" + servico + "]";
 	}
-	
-	
-
 }

@@ -79,6 +79,12 @@ public class AgendamentoController {
 		as.gerarAgenda(id);
 	}
 	
+	@GetMapping("/agendamentoFila/{id}")
+	@ResponseStatus(HttpStatus.CREATED)
+	public void gerarFila(@PathVariable("id") Long id) {
+		as.gerarFila(id);
+	}
+	
 	@PatchMapping("/enviar")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void enviar(@RequestBody AgendamentoDto agendamentoDto) {

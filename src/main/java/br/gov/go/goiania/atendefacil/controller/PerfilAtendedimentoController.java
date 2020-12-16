@@ -37,6 +37,7 @@ public class PerfilAtendedimentoController {
 				ResponseEntity.ok(perfil);
 	}
 	
+	
 	@GetMapping("/gerarPerfil") 
 	@ResponseStatus(HttpStatus.CREATED)
 	public void gerarPerfil(@RequestParam("matricula") String matricula, 

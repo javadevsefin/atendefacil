@@ -16,4 +16,6 @@ public interface PerfilAtendimentoRepository extends JpaRepository<PerfilAtendim
 			+ "JOIN pa.acesso a "
 			+ "WHERE UPPER(a.servidor.matricula) = UPPER(:matricula) ")
 	public List<PerfilAtendimento> listarPerfil(@Param("matricula") String matricula);
+	
+	
  }

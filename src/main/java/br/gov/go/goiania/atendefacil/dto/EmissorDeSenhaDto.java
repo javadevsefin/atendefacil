@@ -13,8 +13,8 @@ public class EmissorDeSenhaDto {
 	private String data;
 	private String horario;
 	private String servico;
-	private String detalhamentoSercivo;
-	private String status;
+	private String detalhamentoServico;
+	private String statusAgendamento;
 	private String prioridade;
 	
 	public EmissorDeSenhaDto(Agendamento a) {
@@ -27,8 +27,8 @@ public class EmissorDeSenhaDto {
 		this.data = a.getGrade().getCalendario().getDia();
 		this.servico = a.getGrade().getServico().getDescricao();
 		this.horario = a.getHorario();
-		this.detalhamentoSercivo = a.getDetalhamentoServico().getDescricao();
-		this.status = a.getStatusAgendamento();
+		this.detalhamentoServico = a.getDetalhamentoServico().getDescricao();
+		this.statusAgendamento = a.getStatusAgendamento();
 		this.prioridade = a.getPrioridade();
 		
 	}
@@ -89,20 +89,20 @@ public class EmissorDeSenhaDto {
 		this.servico = servico;
 	}
 
-	public String getDetalhamentoSercivo() {
-		return detalhamentoSercivo;
+	public String getDetalhamentoServico() {
+		return detalhamentoServico;
 	}
 
-	public void setDetalhamentoSercivo(String detalhamentoSercivo) {
-		this.detalhamentoSercivo = detalhamentoSercivo;
+	public void setDetalhamentoServico(String detalhamentoServico) {
+		this.detalhamentoServico = detalhamentoServico;
 	}
 
-	public String getStatus() {
-		return status;
+	public String getStatusAgendamento() {
+		return statusAgendamento;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setStatusAgendamento(String statusAgendamento) {
+		this.statusAgendamento = statusAgendamento;
 	}
 
 	public String getPrioridade() {
@@ -134,8 +134,8 @@ public class EmissorDeSenhaDto {
 	public String toString() {
 		return "EmissorDeSenhaDto [identificador=" + identificador + ", senha=" + senha + ", nome=" + nome
 				+ ", cpfCnpj=" + cpfCnpj + ", unidade=" + unidade + ", endereco=" + endereco + ", data=" + data
-				+ ", horario=" + horario + ", servico=" + servico + ", detalhamentoSercivo=" + detalhamentoSercivo
-				+ ", status=" + status + ", prioridade=" + prioridade + "]";
+				+ ", horario=" + horario + ", servico=" + servico + ", detalhamentoServico=" + detalhamentoServico
+				+ ", statusAgendamento=" + statusAgendamento + ", prioridade=" + prioridade + "]";
 	}
 	
 	
