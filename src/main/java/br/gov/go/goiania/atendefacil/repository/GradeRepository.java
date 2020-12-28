@@ -19,7 +19,7 @@ public interface GradeRepository extends JpaRepository<Grade, Long> {
 			+ "WHERE UPPER(u.descricao) LIKE UPPER(:unidade) "
 			+ "AND c.dia BETWEEN :dataInicial AND :dataFinal "
 			+ "AND UPPER(s.descricao) LIKE UPPER(:servico) ")
-	List<Grade> buscaAvancada(
+	public List<Grade> buscaAvancada(
 			@Param("unidade") String unidade,
 			@Param("dataInicial") String dataInicial,
 			@Param("dataFinal") String dataFinal,

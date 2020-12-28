@@ -36,5 +36,9 @@ public interface AgendamentoRepository extends JpaRepository<Agendamento, Long>{
 			@Param("calendario") String calendario,
 			@Param("unidade") String unidade);
 	
+	@Query("SELECT a FROM Agendamento a "
+			+ "JOIN a.contribuinte c "
+			+ "WHERE UPPER(c.cpfCnpj) = UPPER(:cpfCnpj) ")
+	public List<Agendamento> findByAgendamentoMatricula(@Param("cpfCnpj") String cpfCnpj);
 	
 }

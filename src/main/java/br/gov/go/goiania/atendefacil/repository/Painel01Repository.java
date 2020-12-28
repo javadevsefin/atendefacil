@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import br.gov.go.goiania.atendefacil.domain.Painel01;
 
 @Repository
-public interface Painel01Respository extends JpaRepository<Painel01, Long>{
+public interface Painel01Repository extends JpaRepository<Painel01, Long>{
 	
 	 @Query("FROM Painel01 WHERE fila_id = (:filaId) ")
 	 public Optional<Painel01> findByFilaId(@Param("filaId") Long filaId);

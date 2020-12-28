@@ -1,6 +1,7 @@
 package br.gov.go.goiania.atendefacil.controller;
 
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +20,7 @@ public class UnidadeController {
 	private UnidadeService us; 
 	
 	@GetMapping()
-	public ResponseEntity<Iterable<Unidade>>  listarUnidade(){
+	public ResponseEntity<Iterable<Unidade>> listarUnidade(){
 		return ResponseEntity.ok(us.listarUnidade());
 	}
 	
@@ -27,6 +28,13 @@ public class UnidadeController {
 	public ResponseEntity<Unidade> listarUnidade(@PathVariable("id") Long id){
 		Optional<Unidade> unidade = us.listUnidadeById(id);
 		return unidade.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+	}
+	
+	@GetMapping("/unidadeGenerica")
+	public ResponseEntity<List<Unidade>> listarUnidade( 
+			@RequestParam(value="role") String role, 
+			@RequestParam(value="unidadeId") Long unidadeId){
+		return ResponseEntity.ok(us.listarUnidadeGenerica(role, unidadeId));
 	}
 	
 	@PostMapping()

@@ -37,6 +37,11 @@ public class FilaController {
 		return fila.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
 	}
 	
+	@GetMapping("/mobile/avaliar/{identificador}")
+	public ResponseEntity<List<Fila>> findByIdentificador(@PathVariable("identificador") Long identificador){
+		return ResponseEntity.ok(fs.findByIdentificador(identificador));
+	}
+	
 	@GetMapping("/espera/{matricula}/{unidade}")
 	public ResponseEntity<List<Fila>> listarFilaEspera(@PathVariable("matricula") String matricula,
 													   @PathVariable("unidade") String unidade) {

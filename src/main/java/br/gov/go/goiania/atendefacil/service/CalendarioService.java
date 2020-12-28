@@ -1,5 +1,6 @@
 package br.gov.go.goiania.atendefacil.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,14 @@ public class CalendarioService {
 	
 	@Autowired
 	private CalendarioRepository cr;
+	
+	public Iterable<Calendario> listarDiasAtivos(){
+		return cr.listarDiasAtivo();
+	}
+	
+	public List<Calendario> pesquisaAvancada(String dataInicial, String dataFinal, String statusCalendario, String observacao){
+		return cr.buscaAvancada(dataInicial, dataFinal, statusCalendario, observacao);
+	}
 	
 	public Iterable<Calendario> listarCalendario(){
 		return cr.findAll();

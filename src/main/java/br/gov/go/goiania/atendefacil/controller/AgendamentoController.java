@@ -73,6 +73,11 @@ public class AgendamentoController {
 		return as.listarAgendamento(page, size);
 	}
 	
+	@GetMapping("/mobile/consulta/{cpfCnpj}")
+	public ResponseEntity<List<Agendamento>> findByAgendamentoMatricula(@PathVariable("cpfCnpj") String cpfCnpj){
+		return ResponseEntity.ok(as.findByAgendamentoMatricula(cpfCnpj));
+	}
+	
 	@GetMapping("/{id}")
 	@ResponseStatus(HttpStatus.CREATED)
 	public void gravar(@PathVariable("id") Long id) {

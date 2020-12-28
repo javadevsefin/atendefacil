@@ -90,7 +90,7 @@ public class AtendimentoService {
 			f.get().setAtendente(a.get());
 			
 			fr.save(f.get());
-			ps.gerarPainel01(f);
+			ps.gerarPainel(f);
 		}
 	}
 	

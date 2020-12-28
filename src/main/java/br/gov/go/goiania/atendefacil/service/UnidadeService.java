@@ -1,5 +1,6 @@
 package br.gov.go.goiania.atendefacil.service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,19 @@ public class UnidadeService {
 	
 	public Iterable<Unidade> listarUnidade(){
 		return ur.findAll();
+	}
+	
+	public List<Unidade> listarUnidadeGenerica(String role, Long unidadeId){
+		
+		List<Unidade> saida = null;
+		
+		if(role.equals("Administrador")) {
+			saida = ur.unidadeGeral();
+		} else {
+			saida = ur.unidadeId(unidadeId);
+		}
+		
+		return saida;
 	}
 
 	public void gravar(Unidade unidade) {

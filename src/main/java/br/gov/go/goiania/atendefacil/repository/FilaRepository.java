@@ -27,4 +27,7 @@ public interface FilaRepository extends JpaRepository<Fila, Long> {
 	public List<Fila> listarFilaEspera(@Param("data") String data, 
 									   @Param("matricula") String matricula,
 									   @Param("unidade") String unidade);
+	
+	@Query("SELECT f FROM Fila f WHERE f.identificador = :identificador")
+	public List<Fila> findByIdentificador(@Param("identificador") Long identificador);
 }

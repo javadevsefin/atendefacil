@@ -29,6 +29,10 @@ public class FilaService {
 	
 	}
 	
+	public List<Fila> findByIdentificador(Long identificador){
+		return fr.findByIdentificador(identificador);
+	}
+	
 	public void gravar(Fila fila) {
 		fila.setAtivacao(ds.now());
 		fila.setStatusAgendamento("Ativado");

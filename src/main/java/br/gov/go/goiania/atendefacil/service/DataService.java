@@ -1,5 +1,6 @@
 package br.gov.go.goiania.atendefacil.service;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -7,6 +8,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class DataService {
+	
+	public LocalDate dataHoje() {
+		LocalDate dataHoje = LocalDate.now();
+		return dataHoje;
+	}
 	
 	public LocalDateTime now() {
 		LocalDateTime now = LocalDateTime.now();

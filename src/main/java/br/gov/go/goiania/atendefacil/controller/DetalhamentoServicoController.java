@@ -37,6 +37,8 @@ public class DetalhamentoServicoController {
 		
 		if( servico.equals("GERAL")) {
 			select = dss.listarServico();
+		} else if(servico.equals("Geral")){
+			select = dss.listarServico();
 		} else {
 			select = dss.selectDetServico(servico);
 		}

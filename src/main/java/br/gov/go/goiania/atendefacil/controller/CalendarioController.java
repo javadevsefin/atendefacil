@@ -1,5 +1,6 @@
 package br.gov.go.goiania.atendefacil.controller;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -28,6 +30,20 @@ public class CalendarioController {
 	@GetMapping()
 	public ResponseEntity<Iterable<Calendario>> listarCalendario() {
 		return ResponseEntity.ok(cs.listarCalendario());
+	}
+	
+	@GetMapping("/diasAtivos")
+	public ResponseEntity<Iterable<Calendario>> listarDiasAtivos(){
+		return ResponseEntity.ok(cs.listarDiasAtivos());
+	}
+	
+	@GetMapping("/buscar")
+	public ResponseEntity<List<Calendario>> pesquisaAvancada(
+							@RequestParam(value="dataInicial", required = false, defaultValue="") String dataInicial, 
+							@RequestParam(value="dataFinal", required = false, defaultValue = "") String dataFinal, 
+							@RequestParam(value="statusCalendario", required = false, defaultValue = "")String statusCalendario, 
+							@RequestParam(value="observacao", required = false, defaultValue = "") String observacao){
+		return ResponseEntity.ok(cs.pesquisaAvancada(dataInicial,dataFinal,statusCalendario,observacao));
 	}
 	
 	@GetMapping("/{id}")
