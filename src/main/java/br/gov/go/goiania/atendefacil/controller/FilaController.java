@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -25,6 +26,10 @@ public class FilaController {
 	@Autowired
 	private FilaService fs;
 	
+	@GetMapping()
+	public Iterable<Fila> listarFila(){
+		return fs.filaFindByAll();
+	}
 	
 	@GetMapping("/ativados/{unidade}")
 	public ResponseEntity<Iterable<Fila>> listarFila(@PathVariable("unidade") String unidade){
@@ -40,6 +45,19 @@ public class FilaController {
 	@GetMapping("/mobile/avaliar/{identificador}")
 	public ResponseEntity<List<Fila>> findByIdentificador(@PathVariable("identificador") Long identificador){
 		return ResponseEntity.ok(fs.findByIdentificador(identificador));
+	}
+	
+	@GetMapping("/mobile/finalizado")
+	public ResponseEntity<List<Fila>> findByFinalizado(){
+		return ResponseEntity.ok(fs.findByFinalizado());
+	}
+	
+	@GetMapping("/mobile/avaliando")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void avaliar(@RequestParam("idFila") Long idFila, 
+						@RequestParam("idAgenda") Long idAgenda, 
+						@RequestParam("nota") String nota) {
+		fs.avaliar(idFila, idAgenda, nota);
 	}
 	
 	@GetMapping("/espera/{matricula}/{unidade}")

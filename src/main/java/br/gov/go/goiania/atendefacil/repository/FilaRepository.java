@@ -30,4 +30,10 @@ public interface FilaRepository extends JpaRepository<Fila, Long> {
 	
 	@Query("SELECT f FROM Fila f WHERE f.identificador = :identificador")
 	public List<Fila> findByIdentificador(@Param("identificador") Long identificador);
+	
+	
+	@Query("SELECT f FROM Fila f WHERE f.statusFila = 'Finalizado' ")
+	public List<Fila> findByFinalizado();
+	
+	 
 }
