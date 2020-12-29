@@ -28,7 +28,7 @@ public interface FilaRepository extends JpaRepository<Fila, Long> {
 									   @Param("matricula") String matricula,
 									   @Param("unidade") String unidade);
 	
-	@Query("SELECT f FROM Fila f WHERE f.identificador = :identificador")
+	@Query("SELECT f FROM Fila f WHERE f.identificador = :identificador AND f.statusAgendamento = 'Ativado' OR f.statusAgendamento = 'Reagendado' ")
 	public List<Fila> findByIdentificador(@Param("identificador") Long identificador);
 	
 	
