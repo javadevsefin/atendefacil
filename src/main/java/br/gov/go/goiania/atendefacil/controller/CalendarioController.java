@@ -43,7 +43,16 @@ public class CalendarioController {
 							@RequestParam(value="dataFinal", required = false, defaultValue = "") String dataFinal, 
 							@RequestParam(value="statusCalendario", required = false, defaultValue = "")String statusCalendario, 
 							@RequestParam(value="observacao", required = false, defaultValue = "") String observacao){
-		return ResponseEntity.ok(cs.pesquisaAvancada(dataInicial,dataFinal,statusCalendario,observacao));
+		return ResponseEntity.ok(cs.pesquisaAvancada(dataInicial,dataFinal,"%" + statusCalendario + "%","%" + observacao + "%"));
+	}
+	
+	@GetMapping("/inativarDias")
+	@ResponseStatus(HttpStatus.CREATED)
+	public void  inativarDias  (
+			@RequestParam(value="dataInicial", required = true, defaultValue="") String dataInicial, 
+			@RequestParam(value="dataFinal", required = true, defaultValue = "") String dataFinal){
+		 
+		cs.inativarDias(dataInicial, dataFinal);
 	}
 	
 	@GetMapping("/{id}")

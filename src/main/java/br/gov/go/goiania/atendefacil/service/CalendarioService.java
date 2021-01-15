@@ -14,6 +14,7 @@ public class CalendarioService {
 	
 	@Autowired
 	private CalendarioRepository cr;
+
 	
 	public Iterable<Calendario> listarDiasAtivos(){
 		return cr.listarDiasAtivo();
@@ -29,6 +30,10 @@ public class CalendarioService {
 	
 	public Optional<Calendario> listCalendarioById(Long id){
 		return cr.findById(id);
+	}
+	
+	public void inativarDias(String dataInicial, String dataFinal) {
+		cr.inativarDias(dataInicial, dataFinal);
 	}
 	
 	public void gravar(Calendario calendario) {

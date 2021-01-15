@@ -16,7 +16,7 @@ public interface FilaRepository extends JpaRepository<Fila, Long> {
 	public Iterable<Fila> listarFilaAtivados(@Param("data") String data,
 											 @Param("unidade") String unidade);
 	
-	@Query(nativeQuery =true, value ="SELECT * FROM fila as f WHERE f.data = (:data) AND f.status_Fila = 'Aguardando' "
+	@Query(nativeQuery=true, value ="SELECT * FROM fila as f WHERE f.data = (:data) AND f.status_Fila = 'Aguardando' "
 					+ "AND unidade = (:unidade) "
 					+ "AND f.detalhamento_Servico IN (SELECT ds.descricao FROM perfil_atendimento AS pa "
 					+ "JOIN acesso AS a " 

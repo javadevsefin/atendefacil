@@ -18,11 +18,17 @@ public interface CalendarioRepository extends JpaRepository<Calendario, Long>{
 	
 	@Query("SELECT c FROM Calendario c "
 			+ "WHERE c.dia BETWEEN :dataInicial AND :dataFinal "
-			+ "AND UPPER(c.statusCalendario) = UPPER(:statusCalendario) "
-			+ "AND UPPER(c.observacao) = UPPER(:observacao) ")
+			+ "AND UPPER(c.statusCalendario) LIKE UPPER(:statusCalendario) "
+			+ "AND UPPER(c.observacao) LIKE UPPER(:observacao) ")
 	public List<Calendario> buscaAvancada(
 			@Param("dataInicial") String dataInicial,
 			@Param("dataFinal") String dataFinal, 
 			@Param("statusCalendario") String statusCalendario,
 			@Param("observacao") String observacao);
+	
+	@Query(nativeQuery=true, value="UPDATE calendario SET status_calendario = 'Inativo' WHERE dia BETWEEN (:dataInicial) AND (:dataFinal) ")
+	public void inativarDias(			
+			@Param("dataInicial") String dataInicial,
+			@Param("dataFinal") String dataFinal);
+	
 }
