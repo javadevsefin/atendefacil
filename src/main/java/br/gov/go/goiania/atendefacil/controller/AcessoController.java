@@ -46,6 +46,16 @@ public class AcessoController {
 		return acesso.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
 	}
 	
+	@GetMapping("/alterarSenha")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void alterarSenha(
+			@RequestParam(value="matricula", required = true) String matricula,
+			@RequestParam(value="senha", required = true) String senha,
+			@RequestParam(value="novaSenha", required = true) String novaSenha,
+			@RequestParam(value="confirmarNovaSenha", required = true) String confirmarNovaSenha) {
+		as.alterarSenha(matricula, senha, novaSenha, confirmarNovaSenha);
+	}
+	
 	@PostMapping()
 	@ResponseStatus(HttpStatus.CREATED)
 	public void gravar(@RequestBody Acesso acesso) {

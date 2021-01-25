@@ -13,7 +13,7 @@ public class EmailService {
 		email.setSSLOnConnect(true);
 		email.setHostName( "smtp.outlook.com" );
 		email.setSslSmtpPort( "465" );
-		email.setAuthenticator( new DefaultAuthenticator( "kennedy_tomazete@outlook.com" ,  "@dev_ken130483" ) );
+		email.setAuthenticator( new DefaultAuthenticator( "kennedy_tomazete@outlook.com" ,  "senha" ) );
 		try {
 		    email.setFrom( "kennedy_tomazete@outlook.com");
 		     
