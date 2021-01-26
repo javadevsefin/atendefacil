@@ -57,6 +57,13 @@ public class AgendamentoController {
 		return ResponseEntity.ok(as.buscaAvancada("%" + unidade + "%",  dataInicial ,  dataFinal , "%" + servico + "%", "%" + statusAgendamento + "%" ));
 	}
 	
+	@GetMapping("/reclassificarPrioridade/{id}/{prioridade}")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void reclassificarPrioridade(@PathVariable("id") Long id,
+										@PathVariable("prioridade") String prioridade) {
+		as.reclassifcarPrioridade(id, prioridade);
+	}
+	
 	@GetMapping("/agendar")
 	public ResponseEntity<List<Agendamento>> agendaContribuinte(
 			@RequestParam(value="calendario", required = false, defaultValue = "") String calendario,

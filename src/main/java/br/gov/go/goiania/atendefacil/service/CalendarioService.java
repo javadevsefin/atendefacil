@@ -14,10 +14,13 @@ public class CalendarioService {
 	
 	@Autowired
 	private CalendarioRepository cr;
-
 	
+	@Autowired
+	private DataService ds;
+
 	public Iterable<Calendario> listarDiasAtivos(){
-		return cr.listarDiasAtivo();
+		String hoje = ds.dataHoje().toString();
+		return cr.listarDiasAtivo(hoje);
 	}
 	
 	public List<Calendario> pesquisaAvancada(String dataInicial, String dataFinal, String statusCalendario, String observacao){

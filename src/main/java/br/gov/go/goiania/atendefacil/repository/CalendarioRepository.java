@@ -12,8 +12,8 @@ import br.gov.go.goiania.atendefacil.domain.Calendario;
 @Repository
 public interface CalendarioRepository extends JpaRepository<Calendario, Long>{
 	
-	@Query("FROM Calendario WHERE statusCalendario = 'Ativo' ORDER BY dia ASC ")
-	public Iterable<Calendario> listarDiasAtivo();
+	@Query("SELECT c FROM Calendario c WHERE c.statusCalendario = 'Ativo' AND c.dia >= :hoje ORDER BY c.dia ASC ")
+	public Iterable<Calendario> listarDiasAtivo(@Param("hoje") String hoje);
 	
 	
 	@Query("SELECT c FROM Calendario c "

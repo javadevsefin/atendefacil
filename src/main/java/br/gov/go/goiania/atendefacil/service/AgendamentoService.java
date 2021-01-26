@@ -138,6 +138,15 @@ public class AgendamentoService {
 		
 		ar.save(agendamento);
 	}
+	
+	public void reclassifcarPrioridade(Long id, String prioridade) {
+		Agendamento agendamento = ar.findById(id).orElseThrow(()->
+		new ResponseStatusException(HttpStatus.BAD_REQUEST, "Agendamento não encontrado"));
+		
+		agendamento.setPrioridade(prioridade);
+		
+		ar.save(agendamento);
+	}
 	 
 	public String ajustaHora(Integer horaM) {
 		
