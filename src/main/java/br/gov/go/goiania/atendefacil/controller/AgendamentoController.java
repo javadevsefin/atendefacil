@@ -81,8 +81,13 @@ public class AgendamentoController {
 	}
 	
 	@GetMapping("/mobile/consulta/{cpfCnpj}")
-	public ResponseEntity<List<Agendamento>> findByAgendamentoMatricula(@PathVariable("cpfCnpj") String cpfCnpj){
-		return ResponseEntity.ok(as.findByAgendamentoMatricula(cpfCnpj));
+	public ResponseEntity<List<Agendamento>> findByAgendamentoCpfCnpj(@PathVariable("cpfCnpj") String cpfCnpj){
+		return ResponseEntity.ok(as.findByAgendamentoCpfCnpj(cpfCnpj));
+	}
+	
+	@GetMapping("/ativado/{cpfCnpj}")
+	public ResponseEntity<List<Agendamento>> findByAgendamentoCpfCnpjAtivado(@PathVariable("cpfCnpj") String cpfCnpj){
+		return ResponseEntity.ok(as.findByAgendamentoCpfCnpjAtivado(cpfCnpj));
 	}
 	
 	@GetMapping("/{id}")

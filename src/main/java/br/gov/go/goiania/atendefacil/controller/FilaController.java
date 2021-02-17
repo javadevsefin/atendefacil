@@ -52,6 +52,11 @@ public class FilaController {
 		return ResponseEntity.ok(fs.findByFinalizado());
 	}
 	
+	@GetMapping("/verifica/{identificador}")
+	public ResponseEntity<Optional<Fila>> findByFilaFinalizado(@PathVariable("identificador") Long identificador){
+		return ResponseEntity.ok(fs.findByFilaFinalizado(identificador));
+	}
+	
 	@GetMapping("/mobile/avaliando")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void avaliar(@RequestParam("idFila") Long idFila, 

@@ -1,6 +1,7 @@
 package br.gov.go.goiania.atendefacil.repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -34,6 +35,9 @@ public interface FilaRepository extends JpaRepository<Fila, Long> {
 	
 	@Query("SELECT f FROM Fila f WHERE f.statusFila = 'Finalizado' ")
 	public List<Fila> findByFinalizado();
+	
+	@Query("SELECT f FROM Fila f WHERE f.identificador = :identificador AND statusFila = 'Finalizado' ")
+	public Optional<Fila> findByFilaFinalizado(@Param("identificador") Long identificador);
 	
 	 
 }

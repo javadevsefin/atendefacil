@@ -101,8 +101,12 @@ public class AgendamentoService {
 		return ar.agendaContribuinte(calendario, unidade);
 	}
 	
-	public List<Agendamento> findByAgendamentoMatricula(String cpfCnpj){
-		return ar.findByAgendamentoMatricula(cpfCnpj);
+	public List<Agendamento> findByAgendamentoCpfCnpj(String cpfCnpj){
+		return ar.findByAgendamentoCpfCnpj(cpfCnpj);
+	}
+	
+	public List<Agendamento> findByAgendamentoCpfCnpjAtivado(String cpfCnpj){
+		return ar.findByAgendamentoCpfCnpjAtivado(cpfCnpj);
 	}
 	
 	public Page<Agendamento> listarAgendamento(Integer page, Integer size){

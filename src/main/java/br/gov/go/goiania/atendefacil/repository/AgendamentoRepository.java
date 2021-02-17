@@ -39,6 +39,12 @@ public interface AgendamentoRepository extends JpaRepository<Agendamento, Long>{
 	@Query("SELECT a FROM Agendamento a "
 			+ "JOIN a.contribuinte c "
 			+ "WHERE UPPER(c.cpfCnpj) = UPPER(:cpfCnpj) ")
-	public List<Agendamento> findByAgendamentoMatricula(@Param("cpfCnpj") String cpfCnpj);
+	public List<Agendamento> findByAgendamentoCpfCnpj(@Param("cpfCnpj") String cpfCnpj);
+	
+	
+	@Query("SELECT a FROM Agendamento a "
+			+ "JOIN a.contribuinte c "
+			+ "WHERE UPPER(c.cpfCnpj) = UPPER(:cpfCnpj) AND a.statusAgendamento = 'Ativado'  ")
+	public List<Agendamento> findByAgendamentoCpfCnpjAtivado(@Param("cpfCnpj") String cpfCnpj);
 	
 }

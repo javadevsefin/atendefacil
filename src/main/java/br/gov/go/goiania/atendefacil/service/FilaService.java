@@ -47,6 +47,10 @@ public class FilaService {
 		return fr.findByFinalizado();
 	}
 	
+	public Optional<Fila> findByFilaFinalizado(Long identificador){
+		return fr.findByFilaFinalizado(identificador);
+	}
+	
 	public void gravar(Fila fila) {
 		fila.setAtivacao(ds.now());
 		fila.setStatusAgendamento("Ativado");
