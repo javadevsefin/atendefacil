@@ -19,6 +19,7 @@ import br.gov.go.goiania.atendefacil.repository.UnidadeRepository;
 @Service
 public class AcessoService {
 	
+	Acesso acesso;
 	
 	@Autowired
 	private AcessoRepository ar;
@@ -40,19 +41,26 @@ public class AcessoService {
 		return ar.findById(id);
 	}
 	
-	public Optional<Acesso> logar(String matricula, String senha){
-		return ar.logar(matricula, senha);
+	public Acesso logar(String matricula, String senha){
+		
+		Acesso a = ar.logar(matricula, senha);
+		
+		if(a.getServidor().getMatricula().equals(matricula) && a.getSenha().equals(senha)) {
+			this.acesso = a;	
+		}
+		return this.acesso;
 	}
 	
 	public void alterarSenha(String matricula, String senha, String novaSenha, String confirmarNovaSenha){
-		Acesso a = ar.logar(matricula, senha).orElseThrow(()->
-				new ResponseStatusException(HttpStatus.BAD_REQUEST, "Servidor não encontrado"));
 		
-		if(novaSenha.equals(confirmarNovaSenha)){
+		Acesso a = ar.logar(matricula, senha);
+		
+		if(a.getServidor().getMatricula().equals(matricula) && a.getSenha().equals(senha)) {
+			if(novaSenha.equals(confirmarNovaSenha)){
 				a.setSenha(novaSenha);
 				ar.save(a);
+			}
 		}
-	
 	}
 	
 	public void gravar(Acesso acesso) {

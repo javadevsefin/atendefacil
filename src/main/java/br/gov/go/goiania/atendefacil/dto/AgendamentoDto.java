@@ -6,6 +6,7 @@ public class AgendamentoDto {
 	private Long contribuinte; 
 	private Long detalhamentoServico;
 	private String prioridade;
+	private Boolean aceite;
 	
 	public AgendamentoDto() {
 		
@@ -41,5 +42,13 @@ public class AgendamentoDto {
 
 	public void setPrioridade(String prioridade) {
 		this.prioridade = prioridade;
+	}
+
+	public Boolean getAceite() {
+		return aceite;
+	}
+
+	public void setAceite(Boolean aceite) {
+		this.aceite = aceite;
 	}
 }

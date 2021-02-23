@@ -54,6 +54,17 @@ public class ContribuinteController {
 		return contribuinte.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
 	}
 	
+	@GetMapping("/alterarSenha")
+	@ResponseStatus(HttpStatus.NO_CONTENT)
+	public void alterarSenha(
+			@RequestParam(value="cpfCnpj", required = true) String cpfCnpj,
+			@RequestParam(value="senha", required = true) String senha,
+			@RequestParam(value="novaSenha", required = true) String novaSenha,
+			@RequestParam(value="confirmarNovaSenha", required = true) String confirmarNovaSenha) {
+		
+		cs.alterarSenha(cpfCnpj, senha, novaSenha, confirmarNovaSenha);
+	}
+	
 	@PostMapping()
 	@ResponseStatus(HttpStatus.CREATED)
 	public void gravar(@RequestBody Contribuinte contribuinte) {

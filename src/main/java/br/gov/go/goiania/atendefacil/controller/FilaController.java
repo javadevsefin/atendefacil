@@ -76,5 +76,10 @@ public class FilaController {
 	public void gravar(@RequestBody Fila fila) {
 		fs.gravar(fila);
 	}
+	
+	@GetMapping("/contarAvaliacao")
+	public ResponseEntity<Object[]> contarAvaliacao() {
+		return ResponseEntity.ok(fs.contarAvaliacao());
+	}
 
 }

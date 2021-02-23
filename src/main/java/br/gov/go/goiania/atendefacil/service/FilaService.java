@@ -81,5 +81,9 @@ public class FilaService {
 	public Optional<Fila> findById(Long id) {
 		return fr.findById(id);
 	}
+	
+	public Object[] contarAvaliacao() {
+		return fr.contarAvaliacao();
+	}
 
 }

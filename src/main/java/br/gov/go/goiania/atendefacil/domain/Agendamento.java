@@ -41,6 +41,9 @@ public class Agendamento implements Serializable {
 	@JoinColumn(name = "contribuinte_id", nullable = true)
 	private Contribuinte contribuinte = new Contribuinte();
 	
+	@Column(name="aceite", nullable = true)
+	private Boolean aceite;
+	
 	public Agendamento() {
 		
 	}
@@ -116,12 +119,22 @@ public class Agendamento implements Serializable {
 	public void setContribuinte(Contribuinte contribuinte) {
 		this.contribuinte = contribuinte;
 	}
+	
+	
+	public Boolean getAceite() {
+		return aceite;
+	}
+
+	public void setAceite(Boolean aceite) {
+		this.aceite = aceite;
+	}
 
 	@Override
 	public String toString() {
 		return "Agendamento [id=" + id + ", horario=" + horario + ", sequencial=" + sequencial + ", prioridade="
 				+ prioridade + ", senha=" + senha + ", statusAgendamento=" + statusAgendamento + ", grade=" + grade
-				+ ", detalhamentoServico=" + detalhamentoServico + ", contribuinte=" + contribuinte + "]";
+				+ ", detalhamentoServico=" + detalhamentoServico + ", contribuinte=" + contribuinte + ", aceite="
+				+ aceite + "]";
 	}
 	
 }

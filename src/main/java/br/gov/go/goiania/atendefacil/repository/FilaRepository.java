@@ -39,5 +39,6 @@ public interface FilaRepository extends JpaRepository<Fila, Long> {
 	@Query("SELECT f FROM Fila f WHERE f.identificador = :identificador AND statusFila = 'Finalizado' ")
 	public Optional<Fila> findByFilaFinalizado(@Param("identificador") Long identificador);
 	
-	 
+	@Query(nativeQuery=true, value="SELECT COUNT(*) FROM fila WHERE status_fila = 'Finalizado' AND avaliacao is null ")
+	public Object[] contarAvaliacao();
 }

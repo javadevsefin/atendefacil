@@ -41,7 +41,7 @@ public class AcessoController {
 			@RequestParam(value="matricula", required = true) String matricula,
 			@RequestParam(value="senha", required = true) String senha){
 		
-		Optional<Acesso> acesso = as.logar(matricula, senha);
+		Optional<Acesso> acesso = Optional.ofNullable(as.logar(matricula, senha));
 		
 		return acesso.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
 	}

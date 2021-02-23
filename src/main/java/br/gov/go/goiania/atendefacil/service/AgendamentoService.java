@@ -130,6 +130,8 @@ public class AgendamentoService {
 		agendamento.setStatusAgendamento("Agendado");
 		agendamento.setContribuinte(contribuinte);
 		agendamento.setDetalhamentoServico(detalhamentoServico);
+		agendamento.setAceite(agendamentoDto.getAceite());
+		
 		
 		ar.save(agendamento);
 	}
