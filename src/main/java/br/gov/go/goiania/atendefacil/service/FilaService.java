@@ -3,6 +3,7 @@ package br.gov.go.goiania.atendefacil.service;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,6 +12,7 @@ import org.springframework.web.server.ResponseStatusException;
 
 import br.gov.go.goiania.atendefacil.domain.Agendamento;
 import br.gov.go.goiania.atendefacil.domain.Fila;
+import br.gov.go.goiania.atendefacil.dto.FilaDto;
 import br.gov.go.goiania.atendefacil.repository.AgendamentoRepository;
 import br.gov.go.goiania.atendefacil.repository.FilaRepository;
 
@@ -45,6 +47,10 @@ public class FilaService {
 	
 	public List<Fila> findByFinalizado(){
 		return fr.findByFinalizado();
+	}
+	
+	public List<FilaDto> findByFilaAgendamentoCpfCnpj(String cpfCnpj){
+		return fr.findByFilaAgendamentoCpfCnpj(cpfCnpj).stream().map(FilaDto::new).collect(Collectors.toList());
 	}
 	
 	public Optional<Fila> findByFilaFinalizado(Long identificador){

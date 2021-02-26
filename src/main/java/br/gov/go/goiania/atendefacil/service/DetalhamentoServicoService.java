@@ -3,10 +3,11 @@ package br.gov.go.goiania.atendefacil.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
 import br.gov.go.goiania.atendefacil.domain.DetalhamentoServico;
 import br.gov.go.goiania.atendefacil.domain.Servico;
 import br.gov.go.goiania.atendefacil.repository.DetalhamentoServicoRepository;
@@ -31,6 +32,12 @@ public class DetalhamentoServicoService {
 	
 	public Optional<DetalhamentoServico> listarDetServicoById(Long id){
 		return dsr.findById(id);
+	}
+	
+	public Page<DetalhamentoServico> listarDetServico(Integer page, Integer size){
+		
+		PageRequest pageRequest = PageRequest.of(page, size);
+		return dsr.findAll(pageRequest) ;
 	}
 	
 	public void gravar(DetalhamentoServico detServico) {

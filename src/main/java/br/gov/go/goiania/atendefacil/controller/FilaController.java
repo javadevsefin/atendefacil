@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.gov.go.goiania.atendefacil.domain.Fila;
+import br.gov.go.goiania.atendefacil.dto.FilaDto;
 import br.gov.go.goiania.atendefacil.service.FilaService;
 
 
@@ -63,6 +64,11 @@ public class FilaController {
 						@RequestParam("idAgenda") Long idAgenda, 
 						@RequestParam("nota") String nota) {
 		fs.avaliar(idFila, idAgenda, nota);
+	}
+	
+	@GetMapping("/consultar/avaliar/{cpfCnpj}")
+	public List<FilaDto> findByFilaAgendamentoCpfCnpj(@PathVariable("cpfCnpj") String cpfCnpj){
+		return fs.findByFilaAgendamentoCpfCnpj(cpfCnpj);
 	}
 	
 	@GetMapping("/espera/{matricula}/{unidade}")

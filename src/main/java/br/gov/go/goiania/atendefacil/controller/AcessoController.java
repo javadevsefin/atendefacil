@@ -1,8 +1,8 @@
 package br.gov.go.goiania.atendefacil.controller;
 
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-
 import br.gov.go.goiania.atendefacil.domain.Acesso;
 import br.gov.go.goiania.atendefacil.service.AcessoService;
 
@@ -44,6 +43,15 @@ public class AcessoController {
 		Optional<Acesso> acesso = Optional.ofNullable(as.logar(matricula, senha));
 		
 		return acesso.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
+	}
+	
+	@GetMapping("/acessoPage")
+	public Page<Acesso> acessoPaginado(
+			@RequestParam(value="page", defaultValue = "0") Integer page, 
+			@RequestParam(value="size", defaultValue = "10") Integer size
+			){
+
+		return as.listarAcesso(page, size);
 	}
 	
 	@GetMapping("/alterarSenha")

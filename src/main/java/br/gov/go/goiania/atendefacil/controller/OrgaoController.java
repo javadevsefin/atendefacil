@@ -2,6 +2,7 @@ package br.gov.go.goiania.atendefacil.controller;
 
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -26,6 +27,15 @@ public class OrgaoController {
 		Optional<Orgao> orgao = os.listOrgaoById(id);
 		return orgao.map(ResponseEntity::ok).orElse(ResponseEntity.notFound().build());
 	} 
+	
+	@GetMapping("/orgaoPage")
+	public Page<Orgao> listarOrgaoPaginado(
+			@RequestParam(value="page", defaultValue = "0") Integer page, 
+			@RequestParam(value="size", defaultValue = "10") Integer size
+			){
+
+		return os.listarOrgaoPage(page, size);
+	}
 	
 	@PostMapping()
 	@ResponseStatus(HttpStatus.CREATED)

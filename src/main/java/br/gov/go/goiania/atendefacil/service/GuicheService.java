@@ -3,8 +3,9 @@ package br.gov.go.goiania.atendefacil.service;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
-
 import br.gov.go.goiania.atendefacil.domain.Guiche;
 import br.gov.go.goiania.atendefacil.repository.GuicheRepository;
 
@@ -20,6 +21,12 @@ public class GuicheService {
 
 	public Optional<Guiche> listGuicheById(Long id) {
 		return gr.findById(id);
+	}
+	
+	public Page<Guiche> listarGuiche(Integer page, Integer size){
+		
+		PageRequest pageRequest = PageRequest.of(page, size);
+		return gr.findAll(pageRequest) ;
 	}
 	
 	public void gravar(Guiche guiche) {

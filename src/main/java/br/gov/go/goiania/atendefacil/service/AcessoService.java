@@ -1,12 +1,12 @@
 package br.gov.go.goiania.atendefacil.service;
 
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
-
 import br.gov.go.goiania.atendefacil.domain.Acesso;
 import br.gov.go.goiania.atendefacil.domain.Role;
 import br.gov.go.goiania.atendefacil.domain.Servidor;
@@ -39,6 +39,12 @@ public class AcessoService {
 	
 	public Optional<Acesso> listAcessoById(Long id){
 		return ar.findById(id);
+	}
+	
+	public Page<Acesso> listarAcesso(Integer page, Integer size){
+		
+		PageRequest pageRequest = PageRequest.of(page, size);
+		return ar.findAll(pageRequest) ;
 	}
 	
 	public Acesso logar(String matricula, String senha){
