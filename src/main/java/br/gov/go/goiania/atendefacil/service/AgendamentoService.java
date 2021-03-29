@@ -119,13 +119,13 @@ public class AgendamentoService {
 		Contribuinte contribuinte = cr.findById(agendamentoDto.getContribuinte()).orElseThrow(()->
 				new ResponseStatusException(HttpStatus.BAD_REQUEST, "Contribuinte não encontrado"));
 		
-		DetalhamentoServico detalhamentoServico = dsr.findById(agendamentoDto.getDetalhamentoServico()).orElseThrow(()->
+		DetalhamentoServico detalhamentoServico = dsr.findById(1L).orElseThrow(()->
 				new ResponseStatusException(HttpStatus.BAD_REQUEST, "Detalhamento de servico não encontrado")); 
 		
 		Agendamento agendamento = ar.findById(agendamentoDto.getId()).orElseThrow(()->
 				new ResponseStatusException(HttpStatus.BAD_REQUEST, "Agendamento não encontrado"));
 		
-		agendamento.setPrioridade(agendamentoDto.getPrioridade());
+		agendamento.setPrioridade("Em espera");
 		agendamento.setStatusAgendamento("Agendado");
 		agendamento.setContribuinte(contribuinte);
 		agendamento.setDetalhamentoServico(detalhamentoServico);
@@ -144,11 +144,16 @@ public class AgendamentoService {
 		ar.save(agendamento);
 	}
 	
-	public void reclassifcarPrioridade(Long id, String prioridade) {
+	public void atualizarAgendamento(Long id, String prioridade, Long detalhamentoServicoId) {
+		
 		Agendamento agendamento = ar.findById(id).orElseThrow(()->
 		new ResponseStatusException(HttpStatus.BAD_REQUEST, "Agendamento não encontrado"));
 		
+		DetalhamentoServico detalhamentoServico = dsr.findById(detalhamentoServicoId).orElseThrow(()->
+		new ResponseStatusException(HttpStatus.BAD_REQUEST, "Detalhamento de servico não encontrado")); 
+		
 		agendamento.setPrioridade(prioridade);
+		agendamento.setDetalhamentoServico(detalhamentoServico);
 		
 		ar.save(agendamento);
 	}

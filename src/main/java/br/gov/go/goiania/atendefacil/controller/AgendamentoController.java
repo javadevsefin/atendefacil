@@ -57,11 +57,12 @@ public class AgendamentoController {
 		return ResponseEntity.ok(as.buscaAvancada("%" + unidade + "%",  dataInicial ,  dataFinal , "%" + servico + "%", "%" + statusAgendamento + "%" ));
 	}
 	
-	@GetMapping("/reclassificarPrioridade/{id}/{prioridade}")
+	@GetMapping("/atualizaragendamento/{id}/{prioridade}/{detalhamentoServicoId}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void reclassificarPrioridade(@PathVariable("id") Long id,
-										@PathVariable("prioridade") String prioridade) {
-		as.reclassifcarPrioridade(id, prioridade);
+	public void atualizarAgendamento(@PathVariable("id") Long id,
+									 @PathVariable("prioridade") String prioridade,
+									 @PathVariable("detalhamentoServicoId") Long detalhamentoServicoId) {
+		as.atualizarAgendamento(id, prioridade, detalhamentoServicoId);
 	}
 	
 	@GetMapping("/agendar")
