@@ -87,5 +87,4 @@ public class FilaController {
 	public ResponseEntity<Object[]> contarAvaliacao() {
 		return ResponseEntity.ok(fs.contarAvaliacao());
 	}
-
 }
