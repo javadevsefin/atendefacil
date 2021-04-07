@@ -29,7 +29,6 @@ public class UnidadeService {
 		} else {
 			saida = ur.unidadeId(unidadeId);
 		}
-		
 		return saida;
 	}
 	

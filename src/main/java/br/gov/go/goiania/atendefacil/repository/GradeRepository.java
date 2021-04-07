@@ -16,7 +16,7 @@ public interface GradeRepository extends JpaRepository<Grade, Long> {
 			+ "JOIN g.unidade u "
 			+ "JOIN g.servico s "
 			+ "JOIN g.calendario c "
-			+ "WHERE UPPER(u.descricao) LIKE UPPER(:unidade) "
+			+ "WHERE UPPER(u.descricao) = UPPER(:unidade) "
 			+ "AND c.dia BETWEEN :dataInicial AND :dataFinal "
 			+ "AND UPPER(s.descricao) LIKE UPPER(:servico) ")
 	public List<Grade> buscaAvancada(

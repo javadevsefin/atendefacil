@@ -39,12 +39,12 @@ public class GradeController {
 	
 	@GetMapping("/buscar")
 	public ResponseEntity<List<Grade>> buscaAvancada(
-			@RequestParam(value ="unidade", required = false, defaultValue="") String unidade,
+			@RequestParam(value ="unidade", required = true) String unidade,
 			@RequestParam(value ="dataInicial", required = false, defaultValue="") String dataInicial,
 			@RequestParam(value ="dataFinal", required = false, defaultValue="") String dataFinal,
 			@RequestParam(value ="servico", required = false, defaultValue="") String servico){
 		
-		return ResponseEntity.ok(gs.buscaAvancada("%" + unidade + "%",  dataInicial ,  dataFinal , "%" + servico + "%"));
+		return ResponseEntity.ok(gs.buscaAvancada( unidade ,  dataInicial ,  dataFinal , "%" + servico + "%"));
 	}
 	
 	@PostMapping()
