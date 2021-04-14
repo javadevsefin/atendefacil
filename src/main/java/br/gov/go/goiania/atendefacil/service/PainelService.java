@@ -193,7 +193,7 @@ public class PainelService {
  		}
 	}
 	
-	//Funções Painel 05
+	//Funções Painel 06
 	public Iterable<Painel06> listarPainel06(){
 		return pr06.findByfive();
 	}
@@ -348,7 +348,6 @@ public class PainelService {
 		}
 	}
 	
-	
 	public void som() {
 		try {
 		    File yourFile = new File("C:\\java-spring\\spring-workspace\\eatendefacil\\teste02.wav");
@@ -370,7 +369,4 @@ public class PainelService {
 	         System.exit(1);
 		}
     }
-	
-
-
 }

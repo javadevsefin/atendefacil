@@ -56,7 +56,6 @@ public class PerfilAtendimentoService {
 		perfilAtendimento.setDetalhamentoServico(detalhamentoServico);
 		
 		par.save(perfilAtendimento);
-		
 	}
 	
 	public void delete(Long id) {
